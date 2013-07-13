@@ -1,0 +1,186 @@
+<html>
+	<head>
+		<title>Money picker</title>
+        <style>
+          td
+          {
+            text-align:right;
+            vertical-align:middle;
+          }
+        </style>
+	</head>
+
+	<body>
+		<div id="input_area">
+			<table>
+				<tr>
+					<td>Add [ENTER KEY]</td>
+				</tr>
+				<tr>
+					<td><input id="input" type="text" onKeypress="doInput(event, null)"></input></td>
+				</tr>
+			</table>
+			<input type="button" value="Hide for printing" onClick="hideButton()"/>
+		</div>
+
+		<p id = "totale">Total: 0$</p>
+		<p id = "avanzo">Remainder: 0.00$</p>
+		<p>Required bills:</p>
+
+		<table id = "list">
+			<tr>
+				<td><p id="m001">0</p></td>
+				<td>x0.01€</td>
+			</tr>        
+			<tr>
+				<td><p id="m002">0</p></td>
+				<td>x0.02€</td>
+			</tr>        
+			<tr>
+				<td><p id="m005">0</p></td>
+				<td>x0.05€</td>
+			</tr>
+			<tr>
+				<td><p id="m01">0</p></td>
+				<td>x0.1€</td>
+			</tr>           
+            <tr>
+				<td><p id="m02">0</p></td>
+				<td>x0.2€</td>
+			</tr>
+			<tr>
+				<td><p id="m05">0</p></td>
+				<td>x0.5€</td>
+			</tr>            
+			<tr>
+				<td><p id="m1">0</p></td>
+				<td>x1€</td>
+			</tr>
+			<tr>
+				<td><p id="m2">0</p></td>
+				<td>x2€</td>
+			</tr>
+			<tr>
+				<td><p id="m5">0</p></td>
+				<td>x5€</td>
+			</tr>
+			<tr>
+				<td><p id="m10">0</p></td>
+				<td>x10€</td>
+			</tr>
+			<tr>
+				<td><p id="m20">0</p></td>
+				<td>x20€</td>
+			</tr>
+			<tr>
+				<td><p id="m50">0</p></td>
+				<td>x50€</td>
+			</tr>
+			<tr>
+				<td><p id="m100">0</p></td>
+				<td>x100€</td>
+			</tr>
+			<tr>
+				<td><p id="m200">0</p></td>
+				<td>x200€</td>
+			</tr>
+			<tr>
+				<td><p id="m500">0</p></td>
+				<td>x500€</td>
+			</tr>
+		</table>
+	</body>
+
+	<script type="text/javascript">
+		var totale = 0;
+		var avanzo = 0;
+		
+		var html_totale = document.getElementById("totale");
+		var html_avanzo = document.getElementById("avanzo");
+		
+		var tagli = new Array('0.01', '0.02', '0.05', '0.1', '0.2', '0.5', '1', '2', '5', '10', '20', '50', '100', '200', '500');
+		var ids = new Array('m001', 'm002', 'm005', 'm01', 'm02', 'm05', 'm1', 'm2', 'm5', 'm10', 'm20', 'm50', 'm100', 'm200', 'm500');
+		var nt = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		
+		var s_totale = "Total: ";
+		var s_avanzo = "Remainder: ";
+		
+		function hideButton()
+		{
+			document.getElementById("input_area").style.visibility = 'hidden';
+			document.getElementById("input_area").style.height = '0px';
+			
+			var j = 0;
+			for(var i = 0; i < tagli.length; i++)
+			{
+				if(nt[i] == 0)
+				{
+					document.getElementById("list").deleteRow(j);
+					j--;
+				}
+				j++;
+			}
+		}
+		
+		function doInput(e, unused)
+		{
+			var key = e.keyCode || e.which;
+
+			if(key == 13)
+			{
+				var s_in = document.getElementById("input");
+				inc = parseFloat(s_in.value);
+				
+				if(!isNaN(inc) && inc > 0)
+				{
+					s_in.value = '';
+					totale += inc;
+					updateTotal(inc);
+				}
+				else
+				{
+					alert("Invalid input");
+				}
+			}
+		}
+		
+		function setText(element, text)
+		{
+			if(element.innerHTML)
+			{
+				element.innerHTML = text;
+			}
+			else if(element.innerText)
+			{
+				element.innerText = text;
+			}
+		}
+		
+		function updateTotal(inc)
+		{
+			var tmp = parseFloat(inc);
+			var max = tagli.length - 1;
+
+			while(tmp >= 0.01)
+			{
+				while(tagli[max] > tmp)
+				{
+					max--;
+				}
+				
+				tmp -= parseFloat(tagli[max]);
+				nt[max]++;
+			}
+			
+			avanzo += tmp;
+			
+			for(var i = 0; i < tagli.length; i++)
+			{
+				setText(document.getElementById(ids[i]), nt[i]);
+			}
+			
+			setText(html_totale, s_totale + totale + "€");
+			setText(html_avanzo, s_avanzo + avanzo + "€");
+		}
+	</script>
+</html>
