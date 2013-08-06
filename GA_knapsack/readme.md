@@ -108,7 +108,7 @@ The option to allow only individuals with a positive fitness did more bad than g
 `lua` `generate.lua` `<output file>` `<initial budget>` `<number of items>`
 
 Example:
-> `lua ks/generator.lua dataset.txt 10000 1024`
+> `lua ks/generate.lua dataset.txt 10000 1024`
 
 Notes:  
 The cost and time ranges can be edited inside the script file. The current ranges are [100,1000] for the cost and [0,60] for the time.  
