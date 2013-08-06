@@ -105,7 +105,7 @@ The option to allow only individuals with a positive fitness did more bad than g
 
 #### Generate the dataset
   
-`lua` `generator.lua` `<output file>` `<initial budget>` `<number of items>`
+`lua` `generate.lua` `<output file>` `<initial budget>` `<number of items>`
 
 Example:
 > `lua ks/generator.lua dataset.txt 10000 1024`
