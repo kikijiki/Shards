@@ -1,5 +1,4 @@
 local g = love.graphics
-local fs = love.filesystem
 
 local Dataset = require "dataset"
 local Menu = require "menu"
@@ -74,7 +73,7 @@ function love.update()
   
   if ga.ready then ga:step()
   else
-    for i = 1, population_speed do ga:populate() end
+    for _ = 1, population_speed do ga:populate() end
   end
 end
 

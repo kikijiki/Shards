@@ -37,8 +37,8 @@ local function load(src)
   local x = 0
   local y = 0
   
-  for i = 1, 4, 1 do
-    for j = 1, 4, 1 do
+  for _ = 1, 4, 1 do
+    for _ = 1, 4, 1 do
       local quad = lg.newQuad(x, y, ss.frame_width, ss.frame_height, ss.width, ss.height)
       ss.quads[#ss.quads + 1] = quad
       x = x + ss.frame_width

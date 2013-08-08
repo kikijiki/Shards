@@ -2,7 +2,7 @@ local M = {}
 M.__index = M
 
 function M:new(compare, content)
-  pq = {
+  local pq = {
     cmp = compare or (function(a, b) return a < b end),
     data = {},
     size = 0

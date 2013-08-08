@@ -164,8 +164,7 @@ function sim.drawGraph()
     local x = cntx + r * math.cos(a); local xt = cntx + r2 * math.cos(a)
     local y = cnty + r * math.sin(a); local yt = cnty + r2 * math.sin(a)
     local w = lg.getFont():getWidth(c.name)
-    local h = 16
-    
+
     lg.push()
       lg.translate(xt, yt)
       

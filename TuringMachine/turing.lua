@@ -10,7 +10,7 @@ function parseInput(input, separator)
   local i = 1
   
   if separator then
-    for k,v in pairs(input:split(separator)) do
+    for _,v in pairs(input:split(separator)) do
       ret[i] = v
       i = i + 1
     end
@@ -136,4 +136,4 @@ local function main()
   end
 end
 
-main(data)
+main()

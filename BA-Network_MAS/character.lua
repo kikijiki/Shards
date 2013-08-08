@@ -142,7 +142,7 @@ function Character:getRumor(other, norepeat)
   
   if norepeat then
     local possible_rumors = {}
-    for i,v in pairs(self.rumors) do
+    for _,v in pairs(self.rumors) do
       if not other:know(v) then table.insert(possible_rumors, v) end
     end
   

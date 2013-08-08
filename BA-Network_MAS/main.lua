@@ -18,7 +18,7 @@ local limit = 300
 
 function love.load(arg)
   sim.initialize(screen, false)
-  for i = 1, 1 do sim.addCharacter() end
+  for _ = 1, 1 do sim.addCharacter() end
   
   local font = lg.newFont("ipaexg.ttf", 16)
   lg.setFont(font)

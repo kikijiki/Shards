@@ -132,7 +132,6 @@ function printMatrix(m)
 end
 
 function aStar(s0, g, h)
-  local state   = {};
   local visited = {};
   local fringe  = {};
 
@@ -141,10 +140,8 @@ function aStar(s0, g, h)
   PriorityQueue.enqueue(fringe, node0, 0)
   visited[node0.id] = true
 
-  local profile = 0
-
   while PriorityQueue.empty(fringe) == false do
-    top = PriorityQueue.dequeue(fringe)
+    local top = PriorityQueue.dequeue(fringe)
 
     if achievedGoal(top.state, g) then
       pathTo(top)
@@ -153,7 +150,7 @@ function aStar(s0, g, h)
 
     local subnodes = expand_h(top, g, h)
 
-    for k, v in ipairs(subnodes) do
+    for _, v in ipairs(subnodes) do
       if not (visited[v.id] == true) then
         visited[v.id] = true
         PriorityQueue.enqueue(fringe, v, v.h)
@@ -165,7 +162,6 @@ function aStar(s0, g, h)
 end
 
 function depthFirst(s0, g)
-  local state   = {};
   local visited = {};
   local fringe  = {};
 
@@ -174,10 +170,8 @@ function depthFirst(s0, g)
   table.insert(fringe, node0)
   visited[node0.id] = true
 
-  local profile = 0
-
   while next(fringe) ~= nil do
-    top = table.remove(fringe)
+    local top = table.remove(fringe)
 
     if achievedGoal(top.state, g) then
       pathTo(top)
@@ -186,7 +180,7 @@ function depthFirst(s0, g)
 
     local subnodes = expand(top, g)
 
-    for k, v in ipairs(subnodes) do
+    for _, v in ipairs(subnodes) do
       if not (visited[v.id] == true) then
         visited[v.id] = true
         table.insert(fringe, v)
@@ -197,32 +191,32 @@ function depthFirst(s0, g)
   print("No solution found")
 end
 
-s0 = {
+local s0 = {
   {1,6,4},
   {8,7,0},
   {3,2,5}}
 
-s1 = {
+local s1 = {
   {8,1,7},
   {4,5,6},
   {2,0,3}}
 
-s2 = {
+local s2 = {
   {2,0,7},
   {3,4,8},
   {5,6,1}}
 
-s4 = {
+local s4 = {
   {2,4,7},
   {3,0,8},
   {5,1,6}}
 
-goal = {
+local goal = {
   {0,1,2},
   {3,4,5},
   {6,7,8}}
 
-goal2 = {
+local goal2 = {
   {1,2,3},
   {4,5,6},
   {7,8,0}}

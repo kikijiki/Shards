@@ -1,4 +1,3 @@
-local Spritesheet = require "spritesheet"
 local lg = love.graphics
 
 local Animation = {}

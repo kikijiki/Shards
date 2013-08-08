@@ -181,7 +181,7 @@ function drawInput()
 end
 
 function drawInfo()
-  s = "Weights:\n  w1 "..weights[1].."\n  w2 "..weights[2].."\n  w3 "..weights[3].."\n\n"
+  local s = "Weights:\n  w1 "..weights[1].."\n  w2 "..weights[2].."\n  w3 "..weights[3].."\n\n"
   s = s.."Error: "..average_error.." (thresold: "..error_thresold..")\n"
   s = s.."Learning rate: "..learning_rate.."\n"
   s = s.."Iterations: "..iteration_count

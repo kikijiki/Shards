@@ -28,9 +28,9 @@ local name_index = 0
 local name_buffer = nil
 
 function shuffle(array)
-  local n, random, j = #array, math.random
-  for i=1, n do
-    j,k = random(n), random(n)
+  local n, random = #array, math.random
+  for _ = 1, n do
+    local j,k = random(n), random(n)
     array[j],array[k] = array[k],array[j]
   end
   return array
@@ -63,7 +63,7 @@ end
 
 math.randomseed(os.time())
 
-for i = 1, arg[3] do
+for _ = 1, arg[3] do
   local name = nextName()
   local cost = math.random(cost_range.min, cost_range.max)
   local time = math.random(time_range.min, time_range.max)

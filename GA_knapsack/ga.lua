@@ -2,7 +2,7 @@ local M = {}
 M.__index = M
 
 function M:new(mode, parameters, dataset)
-  ga = {
+  local ga = {
     population = {},
     ready = false,
     dataset = dataset,
@@ -109,7 +109,6 @@ end
 
 -- Evaluation function (advanced version version).
 function M:evaluateA(g)
-  local start = 1
   local fitness = {cost = 0, time = 0}
   local data = self:getData(g) -- Parse the genome.
   local items = self.dataset.items
@@ -144,7 +143,7 @@ function M:getData(g)
   local start = 1
   local id, count
   local data = {}
-  for i = 1, self.max_item_count do
+  for _ = 1, self.max_item_count do
     id, start = getInt(g, start, self.id_bits)
     count, start = getInt(g, start, self.size_bits)
     table.insert(data, {id = id, count = count})
@@ -180,12 +179,12 @@ function M:makeRandomIndividual()
         
       for i = 1, self.gene_size do g[i] = 0 end
       
-      for i = 1, ones.count do
+      for _ = 1, ones.count do
         local id = math.random(self.gene_size)
         g[id] = 1
       end
     else
-      for i = 1, self.gene_size do
+      for _ = 1, self.gene_size do
         table.insert(g, math.random(2) - 1)
       end    
     end
@@ -213,7 +212,7 @@ end
 -- Tournament selection.
 function M:tournament(pop, size)
   local candidates = {}
-  for i = 1, size do
+  for _ = 1, size do
     --local candidate = table.remove(pop, math.random(1, #pop))
     local c = pop[math.random(1, #pop)]
     table.insert(candidates, c)
@@ -334,7 +333,6 @@ function M:formatGenome(g)
   local gen_line = 80
   local max_lines = 4
   local line_count = 0
-  local j = 0
   
   for i = 1, #g do
     table.insert(genome, g[i])

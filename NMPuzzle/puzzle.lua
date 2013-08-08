@@ -1,4 +1,4 @@
-PriorityQueue = require "pqueue"
+local PriorityQueue = require "pqueue"
 
 -- Pretty print of a state, or two consecutive states.
 -- The function is not very pretty though.
@@ -172,7 +172,7 @@ function shuffle(state, times)
   local moves = {{-1,0,"left"},{1,0,"right"},{0,1,"down"},{0,-1,"up"}}
   print("Shuffling")
   local list = {}
-  for i = 1, times do
+  for _ = 1, times do
     while true do
       local dir = math.random(4)
       local x2 = x + moves[dir][1]
@@ -194,9 +194,9 @@ end
 function makeGoal(row, col)
   local ret = {}
   local v = 0
-  for i = 1, row do
+  for _ = 1, row do
     local newrow = {}
-    for j = 1, col do
+    for _ = 1, col do
       table.insert(newrow, v)
       v = v + 1
     end
@@ -245,7 +245,7 @@ function aStar(s0, goal, heuristic)
   local start = os.clock()
 
   while not fringe:isEmpty() do
-    top = fringe:pop()
+    local top = fringe:pop()
     
     if achievedGoal(top.state, goal) then
       print("Initial state and goal state")
@@ -270,7 +270,7 @@ end
 
 -- Specify a goal manually.
 --[[
-goal = {
+local goal = {
   {0, 1, 2},
   {3, 4, 5},
   {6, 7, 8},
@@ -278,11 +278,11 @@ goal = {
 
 -- Make a default goal state.
 -- Problem with 4 columns and 3 rows, standard order (blank, 1, 2, ...)
-goal = makeGoal(4, 3)
+local goal = makeGoal(4, 3)
   
 -- Specify an initial state manually.
 --[[
-s0 = {
+local s0 = {
   {0, 1, 2},
   {3, 4, 5},
   {6, 7, 8},
@@ -290,5 +290,5 @@ s0 = {
   
 -- Make a random initial state.
 -- The higher the shuffles the more the solution is long, ideally.
-s0 = shuffle(goal, 20)
+local s0 = shuffle(goal, 20)
 aStar(s0, goal, heuristic_manhattan)

@@ -122,9 +122,6 @@ end
 
 -- Process a state of the automaton for a character
 local function process(nfa, dfa, state, a)
-  local succ = {}
-  local closure = {}
-  
   local succ = e_closure(nfa, nextState(nfa, state, a))
   
   if not next(succ, nil) then return end
