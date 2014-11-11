@@ -1,5 +1,5 @@
 //Fractal generator
-//Copyright (C) <2013> Bernacchia Matteo <mailto://kikijikispaccaspecchi@gmail.com>
+//Copyright (C) <2013> Bernacchia Matteo <mailto://dev@kikijiki.com>
 
 //This program is free software: you can redistribute it and/or modify
 //it under the terms of the GNU General Public License as published by
@@ -113,15 +113,15 @@ void printInfo()
     {
         std::cout << "Shader model version      [x]5.0" << std::endl;
         std::cout << "                          [ ]4.1" << std::endl;
-        std::cout << "Floating point precision  [x]double (magnification up to x10^10j" << std::endl;
-        std::cout << "                          [ ]single (magnification up to x40.000j" << std::endl;
+        std::cout << "Floating point precision  [x]double (magnification up to x10^10ï¿½j" << std::endl;
+        std::cout << "                          [ ]single (magnification up to x40.000ï¿½j" << std::endl;
     }
     else
     {
         std::cout << "Shader model version      [ ]5.0" << std::endl;
         std::cout << "                          [x]4.1" << std::endl;
-        std::cout << "Floating point precision  [ ]double (magnification up to x10^10j" << std::endl;
-        std::cout << "                          [x]single (magnification up to x40.000j" << std::endl;
+        std::cout << "Floating point precision  [ ]double (magnification up to x10^10ï¿½j" << std::endl;
+        std::cout << "                          [x]single (magnification up to x40.000ï¿½j" << std::endl;
     }
 
     std::cout << std::endl;
@@ -141,14 +141,14 @@ void printInfo()
     std::cout << "Radius(squared): " << settings_int.square_radius << std::endl;
     std::cout << "Magnification: x" << 1.0 / settings_int.scale << std::endl;
     std::cout << std::endl;
-    std::cout << "CommandsF" << std::endl;
-    std::cout << "y©¨z\t\tradius" << std::endl;
-    std::cout << "yª«z\t\titerations" << std::endl;
-    std::cout << "yleft click + dragz\tscroll" << std::endl;
-    std::cout << "yright click + dragz\tconstant" << std::endl;
-    std::cout << "ymouse wheelz\t\tscale" << std::endl;
-    std::cout << "yspacez\t\tswitch between mandelbrot/julia sets" << std::endl;
-    std::cout << "yescz\t\t\tquit application" << std::endl;
+    std::cout << "Commandsï¿½F" << std::endl;
+    std::cout << "ï¿½yï¿½ï¿½ï¿½ï¿½ï¿½z\t\tradius" << std::endl;
+    std::cout << "ï¿½yï¿½ï¿½ï¿½ï¿½ï¿½z\t\titerations" << std::endl;
+    std::cout << "ï¿½yleft click + dragï¿½z\tscroll" << std::endl;
+    std::cout << "ï¿½yright click + dragï¿½z\tconstant" << std::endl;
+    std::cout << "ï¿½ymouse wheelï¿½z\t\tscale" << std::endl;
+    std::cout << "ï¿½yspaceï¿½z\t\tswitch between mandelbrot/julia sets" << std::endl;
+    std::cout << "ï¿½yescï¿½z\t\t\tquit application" << std::endl;
 }
 
 void errorMsgBox(const std::wstring& msg)
@@ -167,16 +167,16 @@ void errorMsgBox(const std::wstring& msg, HRESULT hr)
     switch(hr)
     {
     case E_INVALIDARG:
-         ss << msg << L" erroryinvalid argumentz @" << __FILE__ << L"(" << std::dec << __LINE__ << L")";
+         ss << msg << L" errorï¿½yinvalid argumentï¿½z @" << __FILE__ << L"(" << std::dec << __LINE__ << L")";
          break;
     //case D3DERR_INVALIDCALL:
-    //    ss << msg << L" erroryinvalid callz @" << __FILE__ << L"(" << std::dec << __LINE__ << L")";
+    //    ss << msg << L" errorï¿½yinvalid callï¿½z @" << __FILE__ << L"(" << std::dec << __LINE__ << L")";
     //   break;
     case E_OUTOFMEMORY:
-        ss << msg << L" erroryout of memoryz @" << __FILE__ << L"(" << std::dec << __LINE__ << L")";
+        ss << msg << L" errorï¿½yout of memoryï¿½z @" << __FILE__ << L"(" << std::dec << __LINE__ << L")";
         break;
     default:
-        ss << msg << L" errorycode:" << std::hex << hr << L"z @" << __FILE__ << L"(" << std::dec << __LINE__ << L")";
+        ss << msg << L" errorï¿½ycode:" << std::hex << hr << L"ï¿½z @" << __FILE__ << L"(" << std::dec << __LINE__ << L")";
     }
     
     

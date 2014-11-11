@@ -1,6 +1,6 @@
 function love.conf(t)
   t.title = "BA-Network MAS simulation"
-  t.author = "Bernacchia Matteo, <kikijikispaccaspecchi@gmail.com>"
+  t.author = "Bernacchia Matteo, <dev@kikijiki.com>"
   t.version = "0.8.0"
   t.console = false
   t.screen.width = 1600
